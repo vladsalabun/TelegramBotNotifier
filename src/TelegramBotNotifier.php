@@ -23,25 +23,32 @@ class TelegramBotNotifier
     
 	public function send() 
 	{
-        foreach($this->recipients as $recipient)
         
-        $ch = curl_init();
-        curl_setopt_array(
-            $ch,
-            array(
-                CURLOPT_URL => 'https://api.telegram.org/bot' . $this->token . '/sendMessage',
-                CURLOPT_POST => TRUE,
-                CURLOPT_RETURNTRANSFER => TRUE,
-                CURLOPT_TIMEOUT => 10,
-                CURLOPT_POSTFIELDS => array(
-                    'chat_id' => $recipient,
-                    'text' => $this->text,
-                    'parse_mode' => 'html',
-                    'disable_web_page_preview' => $this->webPreview,
-                ),
-            )
-        );
-        curl_exec($ch);
+        foreach($this->recipients as $recipient) {
+        
+            $ch = curl_init();
+            
+            curl_setopt_array(
+                $ch,
+                array(
+                
+                    CURLOPT_URL => 'https://api.telegram.org/bot' . $this->token . '/sendMessage',
+                    CURLOPT_POST => TRUE,
+                    CURLOPT_RETURNTRANSFER => TRUE,
+                    CURLOPT_TIMEOUT => 10,
+                    CURLOPT_POSTFIELDS => array(
+                        'chat_id' => $recipient,
+                        'text' => $this->text,
+                        'parse_mode' => 'html',
+                        'disable_web_page_preview' => $this->webPreview,
+                    ),
+                )
+            );
+            
+            curl_exec($ch);
+        
+        }
+        
 	}
 
 	public function br() 
