@@ -23,11 +23,11 @@ $telegram->addRecipient(389687316);
 ```
 Додай повідомлення:
 ```sh
-    $telegram->text('Привіт')->br()->text('Мене звати Влад!');
+$telegram->text('Привіт')->br()->text('Мене звати Влад!');
 ```
 Надішли:
 ```sh
-    $telegram->send();
+$telegram->send();
 ```
 # Додаткові методи:
 | Метод | Опис |
