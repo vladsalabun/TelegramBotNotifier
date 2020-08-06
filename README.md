@@ -4,7 +4,7 @@
 
 # Швидке встановлення:
 
-  - Додай See [@BotFather](https://t.me/botfather)
+  - Додай [@BotFather](https://t.me/botfather)
   - Введи команду /newbot
   - Вигадай унікальне імя для бота, приклад: My Personal Helper
   - Вигадай унікальний логін, що закінчується на «bot», приклад: MyPersonalBot
