@@ -43,6 +43,6 @@ $telegram->addRecipient(389687316);
 | $telegram->webPreview(true)  | Вимикам попереднього перегляду посилання |
 
 # Контакти:
-Влад Салабун
-vlad@salabun.com
+Влад Салабун  
+vlad@salabun.com  
 [https://salabun.com](https://salabun.com)
