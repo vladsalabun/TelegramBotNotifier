@@ -8,6 +8,11 @@
 composer require salabun/telegram-bot-notifier 1.0
 ```
 
+```sh
+use Salabun\TelegramBotNotifier;
+```
+
+
 # Налаштування бота:
 
   - Додай [@BotFather](https://t.me/botfather)
