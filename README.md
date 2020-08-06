@@ -6,26 +6,26 @@
 
   - Додай [@BotFather](https://t.me/botfather)
   - Введи команду /newbot
-  - Вигадай унікальне імя для бота, приклад: My Personal Helper
+  - Вигадай унікальне і'мя для бота, приклад: My Personal Helper
   - Вигадай унікальний логін, що закінчується на «bot», приклад: MyPersonalBot
   - Збережи згенерований токен
   - Напиши своєму боту @MyPersonalBot будь-яке 1 повідомлення
   - Дізнайся свій ID у телеграмі: [@ShowJsonBot](https://t.me/ShowJsonBot) (поле chat -> id)
 
 # Використання:
-Створіть об'єкт:
+Створи об'єкт:
 ```sh
 $telegram = new TelegramBotNotifier($token);
 ```
-Додайте ID отримувача:
+Додай ID отримувача:
 ```sh
 $telegram->addRecipient(389687316);
 ```
-Додайте повідомлення:
+Додай повідомлення:
 ```sh
     $telegram->text('Привіт')->br()->text('Мене звати Влад!');
 ```
-Надішліть:
+Надішли:
 ```sh
     $telegram->send();
 ```
