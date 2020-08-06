@@ -40,7 +40,7 @@ $telegram->addRecipient(389687316);
 | $telegram->code('text') | Рядок коду |
 | $telegram->pre('text') | Відформатований рядок |
 | $telegram->url(['https://www.google.com', 'Google!'] | Посилання |
-| $telegram->webPreview(true)  | Вимикам попереднього перегляду посилання |
+| $telegram->webPreview(true)  | Вимикач попереднього перегляду посилання |
 
 # Контакти:
 Влад Салабун  
