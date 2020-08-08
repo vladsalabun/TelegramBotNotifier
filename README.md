@@ -5,7 +5,7 @@
 # Встановлення:
 
 ```sh
-composer require salabun/telegram-bot-notifier 1.0
+composer require salabun/telegram-bot-notifier 1.01
 ```
 
 ```sh
