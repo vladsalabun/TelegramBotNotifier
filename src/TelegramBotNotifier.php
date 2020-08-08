@@ -15,6 +15,7 @@ class TelegramBotNotifier
         $this->text = '';
         $this->webPreview = true;
         $this->delay = 1;
+        $this->responses = [];
     }
     
     public function addRecipient($id) 
@@ -45,14 +46,14 @@ class TelegramBotNotifier
             );
             
             curl_exec($ch);
-            $responses[$recipient] = curl_getinfo($ch);
+            $this->responses[$recipient][] = curl_getinfo($ch);
             curl_close($ch);
             
             sleep($this->delay);
         
         }
         
-        return $responses;
+        return $this->responses;
     }
 
     public function br() 
