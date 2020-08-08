@@ -8,21 +8,21 @@ namespace Salabun;
 
 class TelegramBotNotifier
 {
-	public function __construct($token) 
-	{
-		$this->token = $token;
-		$this->recipients = [];
-		$this->text = '';
-		$this->webPreview = true;
-	}
+    public function __construct($token) 
+    {
+        $this->token = $token;
+        $this->recipients = [];
+        $this->text = '';
+        $this->webPreview = true;
+    }
     
-	public function addRecipient($id) 
-	{
-		$this->recipients[] = $id;
-	}
+    public function addRecipient($id) 
+    {
+        $this->recipients[] = $id;
+    }
     
-	public function send() 
-	{
+    public function send() 
+    {
         foreach($this->recipients as $recipient)
         
         $ch = curl_init();
@@ -48,64 +48,64 @@ class TelegramBotNotifier
         curl_close($ch);
         
         return $response;
-	}
+    }
 
-	public function br() 
-	{
+    public function br() 
+    {
         $this->text .= PHP_EOL;
         return $this;
     }
     
-	public function text($text) 
-	{
+    public function text($text) 
+    {
         $this->text .= $text;
         return $this;
     }
     
-	public function bold($text) 
-	{
+    public function bold($text) 
+    {
         $this->text .= '<b>' . $text . '</b>';
         return $this;
     }
     
-	public function italic($text) 
-	{
+    public function italic($text) 
+    {
         $this->text .= '<i>' . $text . '</i>';
         return $this;
     }
     
-	public function em($text) 
-	{
+    public function em($text) 
+    {
         $this->text .= '<em>' . $text . '</em>';
         return $this;
     }
     
-	public function strong($text) 
-	{
+    public function strong($text) 
+    {
         $this->text .= '<strong>' . $text . '</strong>';
         return $this;
     }
     
-	public function code($text) 
-	{
+    public function code($text) 
+    {
         $this->text .= '<code>' . $text . '</code>';
         return $this;
     }
     
-	public function pre($text) 
-	{
+    public function pre($text) 
+    {
         $this->text .= '<pre>' . $text . '</pre>';
         return $this;
     }
    
-	public function url($array) 
-	{
+    public function url($array) 
+    {
         $this->text .= '<a href="' . $array[0] . '">' . $array[1] . '</a>';
         return $this;
     }
     
-	public function webPreview($boolean) 
-	{
+    public function webPreview($boolean) 
+    {
         if($boolean == true) {
             $this->webPreview = true;
         } else {
