@@ -1,6 +1,7 @@
 <?php
 /**
- *  Що корисного можна написати на початку файлу? Напевно
+ *  Що корисного можна написати на початку файлу? Напевно, що це чудовий винахід і він колись присене користь людству?! 
+ *  Або ні. 
  */
 namespace Salabun;
 
@@ -17,11 +18,14 @@ class TelegramBotNotifier
     public function __construct($token) 
     {
         $this->token = $token;
-        $this->recipients = [];
+        
         $this->text = '';
-        $this->webPreview = true;
-        $this->delay = 1;
+        $this->delay = 300000; // 0,3 сек.
+        
         $this->responses = [];
+        $this->recipients = [];
+        
+        $this->webPreview = true;
     }
     
     /**
@@ -37,38 +41,52 @@ class TelegramBotNotifier
      */
     public function send() 
     {
-        foreach($this->recipients as $recipient) {
-        
-            $ch = curl_init();
+        if(count($this->recipients) > 0) {
             
-            curl_setopt_array(
-                $ch,
-                array(
-                    CURLOPT_URL => 'https://api.telegram.org/bot' . $this->token . '/sendMessage',
-                    CURLOPT_POST => TRUE,
-                    CURLOPT_RETURNTRANSFER => TRUE,
-                    CURLOPT_TIMEOUT => 10,
-                    CURLOPT_POSTFIELDS => array(
-                        'chat_id' => $recipient,
-                        'text' => $this->text,
-                        'parse_mode' => 'html',
-                        'disable_web_page_preview' => $this->webPreview,
-                    ),
-                )
-            );
+            foreach($this->recipients as $recipient) {
             
-            curl_exec($ch);
+                $ch = curl_init();
+                
+                curl_setopt_array(
+                    $ch,
+                    array(
+                        CURLOPT_URL => 'https://api.telegram.org/bot' . $this->token . '/sendMessage',
+                        CURLOPT_POST => TRUE,
+                        CURLOPT_RETURNTRANSFER => TRUE,
+                        CURLOPT_TIMEOUT => 10,
+                        CURLOPT_POSTFIELDS => array(
+                            'chat_id' => $recipient,
+                            'text' => $this->text,
+                            'parse_mode' => 'html',
+                            'disable_web_page_preview' => $this->webPreview,
+                        ),
+                    )
+                );
+                
+                curl_exec($ch);
+                
+                // Зберігаю відповідь сервера:
+                $this->responses[$recipient][] = curl_getinfo($ch);
+                curl_close($ch);
+                
+                // Чекаю перед надсиланням наступного повідомлення:
+                usleep($this->udelay);
             
-            // Зберігаю відповідь сервера:
-            $this->responses[$recipient][] = curl_getinfo($ch);
-            curl_close($ch);
-            
-            // Чекаю перед надсиланням наступного повідомлення:
-            sleep($this->delay);
-        
+            }
+        } else {
+            return [
+                'status' => 404,
+                'data' => [];
+                'message' => 'You need to specify at least one recipient.';
+            ];
         }
         
-        return $this->responses;
+        return [
+            'status' => 200,
+            'data => '$this->responses;
+            'message' => 'Messages sent.';
+        ];
+        
     }
 
     /**
