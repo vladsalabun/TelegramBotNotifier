@@ -13,7 +13,7 @@ class TelegramBotNotifier
 {
     
     protected $token = null;
-    protected $webPreview = true;
+    protected $disableWebPreview = true;
     
     protected $recipients = [];
     protected $responses = [];
@@ -59,7 +59,7 @@ class TelegramBotNotifier
                             'chat_id' => $recipient,
                             'text' => $this->text,
                             'parse_mode' => 'html',
-                            'disable_web_page_preview' => $this->webPreview,
+                            'disable_web_page_preview' => $this->disableWebPreview,
                         ),
                     )
                 );
@@ -172,16 +172,43 @@ class TelegramBotNotifier
     }
     
     /**
-     *  Відключаю попередній перегляд посилання:
+     *  Попередній перегляд посилання:
      */
     public function webPreview($boolean) 
     {
         if($boolean == true) {
-            $this->webPreview = true;
+            $this->disableWebPreview = false;
         } else {
-            $this->webPreview = false;
+            $this->disableWebPreview = true;
         }
         
+        return $this;
+    }
+    
+    /**
+     *  Вимикаю попередній перегляд посилання:
+     */
+    public function disableWebPreview() 
+    {
+        $this->disableWebPreview = true;
+        return $this;
+    }
+    
+    /**
+     *  Вмикаю попередній перегляд посилання:
+     */
+    public function enableWebPreview() 
+    {
+        $this->disableWebPreview = false;
+        return $this;
+    }
+    
+    /**
+     *  Налаштовую затримку між надсиланнями:
+     */
+    public function udelay($int) 
+    {
+        $this->udelay = $int;
         return $this;
     }
     
