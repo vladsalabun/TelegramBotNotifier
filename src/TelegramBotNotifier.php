@@ -14,6 +14,7 @@ class TelegramBotNotifier
         $this->recipients = [];
         $this->text = '';
         $this->webPreview = true;
+        $this->delay = 1;
     }
     
     public function addRecipient($id) 
@@ -23,31 +24,35 @@ class TelegramBotNotifier
     
     public function send() 
     {
-        foreach($this->recipients as $recipient)
+        foreach($this->recipients as $recipient) {
         
-        $ch = curl_init();
+            $ch = curl_init();
+            
+            curl_setopt_array(
+                $ch,
+                array(
+                    CURLOPT_URL => 'https://api.telegram.org/bot' . $this->token . '/sendMessage',
+                    CURLOPT_POST => TRUE,
+                    CURLOPT_RETURNTRANSFER => TRUE,
+                    CURLOPT_TIMEOUT => 10,
+                    CURLOPT_POSTFIELDS => array(
+                        'chat_id' => $recipient,
+                        'text' => $this->text,
+                        'parse_mode' => 'html',
+                        'disable_web_page_preview' => $this->webPreview,
+                    ),
+                )
+            );
+            
+            curl_exec($ch);
+            $responses[$recipient] = curl_getinfo($ch);
+            curl_close($ch);
+            
+            sleep($this->delay);
         
-        curl_setopt_array(
-            $ch,
-            array(
-                CURLOPT_URL => 'https://api.telegram.org/bot' . $this->token . '/sendMessage',
-                CURLOPT_POST => TRUE,
-                CURLOPT_RETURNTRANSFER => TRUE,
-                CURLOPT_TIMEOUT => 10,
-                CURLOPT_POSTFIELDS => array(
-                    'chat_id' => $recipient,
-                    'text' => $this->text,
-                    'parse_mode' => 'html',
-                    'disable_web_page_preview' => $this->webPreview,
-                ),
-            )
-        );
+        }
         
-        curl_exec($ch);
-        $response = curl_getinfo($ch);
-        curl_close($ch);
-        
-        return $response;
+        return $responses;
     }
 
     public function br() 
