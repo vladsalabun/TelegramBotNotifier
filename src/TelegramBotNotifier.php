@@ -12,20 +12,21 @@ namespace Salabun;
 class TelegramBotNotifier
 {
     
+    protected $token = null;
+    protected $webPreview = true;
+    
+    protected $recipients = [];
+    protected $responses = [];
+    
+    protected $udelay = 300000; // 0,3 сек.
+    protected $text = '';
+    
     /**
      *  Чи варто передавати токен у конструктор? Може краще в метод?
      */
     public function __construct($token) 
     {
         $this->token = $token;
-        
-        $this->text = '';
-        $this->delay = 300000; // 0,3 сек.
-        
-        $this->responses = [];
-        $this->recipients = [];
-        
-        $this->webPreview = true;
     }
     
     /**
