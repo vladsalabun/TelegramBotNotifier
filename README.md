@@ -52,6 +52,8 @@ $telegram->send();
 | $telegram->pre('text') | Відформатований рядок |
 | $telegram->url(['https://www.google.com', 'Google!'] | Посилання |
 | $telegram->webPreview(true)  | Вимикач попереднього перегляду посилання |
+| $telegram->enableWebPreview()  | Увімкнути попередній перегляд посилання |
+| $telegram->disableWebPreview()  | Вимкнути попередній перегляд посилання |
 
 # Контакти:
 Влад Салабун  
