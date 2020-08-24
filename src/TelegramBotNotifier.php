@@ -77,15 +77,15 @@ class TelegramBotNotifier
         } else {
             return [
                 'status' => 404,
-                'data' => [];
-                'message' => 'You need to specify at least one recipient.';
+                'data' => [],
+                'message' => 'You need to specify at least one recipient.'
             ];
         }
         
         return [
             'status' => 200,
-            'data => '$this->responses;
-            'message' => 'Messages sent.';
+            'data' => $this->responses,
+            'message' => 'Messages sent.'
         ];
         
     }
