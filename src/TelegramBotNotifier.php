@@ -82,6 +82,9 @@ class TelegramBotNotifier
             ];
         }
         
+        // Після надсилання повідомлення очищаю текст:
+        $this->text = '';
+        
         return [
             'status' => 200,
             'data' => $this->responses,
@@ -210,6 +213,14 @@ class TelegramBotNotifier
     {
         $this->udelay = $int;
         return $this;
+    }
+    
+    /**
+     *  Повертаю масив отримувачів:
+     */
+    public function recipients() 
+    {
+        return $this->recipients;
     }
     
 }
