@@ -5,7 +5,7 @@
 # Встановлення:
 
 ```sh
-composer require salabun/telegram-bot-notifier 1.03
+composer require salabun/telegram-bot-notifier 1.06
 ```
 
 ```sh
@@ -54,6 +54,7 @@ $telegram->send();
 | $telegram->webPreview(true)  | Вимикач попереднього перегляду посилання |
 | $telegram->enableWebPreview()  | Увімкнути попередній перегляд посилання |
 | $telegram->disableWebPreview()  | Вимкнути попередній перегляд посилання |
+| $telegram->recipients()  | Переглянути список отримувачів |
 
 # Контакти:
 Влад Салабун  
