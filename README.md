@@ -56,10 +56,6 @@ $telegram->sendMessage();
 | $telegram->disableWebPreview()  | Вимкнути попередній перегляд посилання |
 | $telegram->recipients()  | Переглянути список отримувачів |
 
-# Контакти:
-Влад Салабун  
-vlad@salabun.com  
-[https://salabun.com](https://salabun.com)
 
 # Методи для роботи зі списком отримувачів:
 Додати масив отримувачів:
@@ -81,13 +77,18 @@ $telegram->getRecipients();
 $telegram->getText();
 ``` 
 # Методи для надсилання файлів:
-Згенерований HTML:
+Вкажи абсолютний шлях до файлу та опис:
 ```sh 
 $caption = function() {
     $telegram = new TG();
     $telegram->text('Опис файлу');
     return $telegram->getText();
 };
-$telegram->addFile(realpath('test.png'), $caption()); // вкажи абсолютний шлях до файлу
+$telegram->addFile(realpath('test.png'), $caption());
 $telegram->sendDocument();
 ``` 
+
+# Контакти:
+Влад Салабун  
+vlad@salabun.com  
+[https://salabun.com](https://salabun.com)
