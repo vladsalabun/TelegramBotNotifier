@@ -5,7 +5,7 @@
 # Встановлення:
 
 ```sh
-composer require salabun/telegram-bot-notifier 1.06
+composer require salabun/telegram-bot-notifier 1.07
 ```
 
 ```sh
@@ -38,9 +38,9 @@ $telegram->text('Привіт')->br()->text('Мене звати Влад!');
 ```
 Надішли:
 ```sh
-$telegram->send();
+$telegram->sendMessage();
 ```
-# Додаткові методи:
+# Методи для форматування тексту:
 | Метод | Опис |
 | ------ | ------ |
 | $telegram->br() | Новий рядок |
@@ -60,3 +60,34 @@ $telegram->send();
 Влад Салабун  
 vlad@salabun.com  
 [https://salabun.com](https://salabun.com)
+
+# Методи для роботи зі списком отримувачів:
+Додати масив отримувачів:
+```sh 
+$telegram->addRecipients([1371880527, 1371880527], true); // true вказує додавати лише унікальних
+``` 
+Додати отримувача лише якщо його ще немає у списку:
+```sh 
+$telegram->addRecipient(1371880527, true);
+``` 
+Список отримувачів:
+```sh 
+$telegram->getRecipients();
+``` 
+
+# Методи для роботи з текстом:
+Згенерований HTML:
+```sh 
+$telegram->getText();
+``` 
+# Методи для надсилання файлів:
+Згенерований HTML:
+```sh 
+$caption = function() {
+    $telegram = new TG();
+    $telegram->text('Опис файлу');
+    return $telegram->getText();
+};
+$telegram->addFile(realpath('test.png'), $caption()); // вкажи абсолютний шлях до файлу
+$telegram->sendDocument();
+``` 
