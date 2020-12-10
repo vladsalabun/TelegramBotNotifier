@@ -33,8 +33,6 @@ Trait SendDocument
                         
                         curl_exec($ch);
                         
-                        var_dump(curl_getinfo($ch));
-                        
                         // Зберігаю відповідь сервера:
                         $this->responses[$recipient][] = curl_getinfo($ch);
                         curl_close($ch);

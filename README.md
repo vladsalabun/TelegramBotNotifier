@@ -17,7 +17,7 @@ use Salabun\TelegramBotNotifier;
 
   - Додай [@BotFather](https://t.me/botfather)
   - Введи команду /newbot
-  - Вигадай унікальне і'мя для бота, приклад: My Personal Helper
+  - Вигадай унікальне ім'я для бота, приклад: My Personal Helper
   - Вигадай унікальний логін, що закінчується на «bot», приклад: MyPersonalBot
   - Збережи згенерований токен
   - Напиши своєму боту @MyPersonalBot будь-яке 1 повідомлення
