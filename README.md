@@ -75,8 +75,13 @@ $telegram->getRecipients();
 Вкажи абсолютний шлях до файлу. Другим аргументом можна передати рядок тексту, або замикання:
 ```sh 
 $telegram->addFile(realpath('test.png'));
-$telegram->addFile(realpath('test.png'), 'Опис файлу');
+``` 
 
+```sh 
+$telegram->addFile(realpath('test.png'), 'Опис файлу');
+``` 
+
+```sh 
 $telegram->addFile(realpath('test.png'), function() {
     $telegram = new TG();
     $telegram->text('Опис файлу');
