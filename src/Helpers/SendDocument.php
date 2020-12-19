@@ -69,14 +69,17 @@ Trait SendDocument
         ];
     }
     
-    public function addFile($path, $caption) 
+    public function addFile($path, $caption = null) 
     {
         if(gettype($caption) == 'string') {
+            
             $this->files[] = [
                 'path' => $path,
                 'caption' => $caption,
             ]; 
+            
         } else if(gettype($caption) == 'object') {
+            
             if($caption instanceof \Closure) {
                 $this->files[] = [
                     'path' => $path,
@@ -85,6 +88,14 @@ Trait SendDocument
             } else {
                 var_dump($caption);
             }
+            
+        } else if($caption == null) {
+            
+            $this->files[] = [
+                'path' => $path,
+                'caption' => '',
+            ];
+            
         }
         
         
