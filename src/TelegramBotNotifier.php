@@ -17,7 +17,7 @@ class TelegramBotNotifier
 {
     use Markdown, Recipient, SendMessage, SendDocument;
     
-    protected $v = "1.07";
+    protected $v = "1.1";
     protected $token = null;
     protected $disableWebPreview = true;
     

@@ -85,8 +85,6 @@ Trait SendDocument
                     'path' => $path,
                     'caption' => $caption(),
                 ];
-            } else {
-                var_dump($caption);
             }
             
         } else if($caption == null) {
