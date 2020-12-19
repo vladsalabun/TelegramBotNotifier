@@ -5,7 +5,7 @@
 # Встановлення:
 
 ```sh
-composer require salabun/telegram-bot-notifier 1.07
+composer require salabun/telegram-bot-notifier
 ```
 
 ```sh
@@ -71,20 +71,16 @@ $telegram->addRecipient(1371880527, true);
 $telegram->getRecipients();
 ``` 
 
-# Методи для роботи з текстом:
-Згенерований HTML:
-```sh 
-$telegram->getText();
-``` 
 # Методи для надсилання файлів:
-Вкажи абсолютний шлях до файлу та опис:
+Вкажи абсолютний шлях до файлу. Другим аргументом можна передати рядок тексту, або замикання:
 ```sh 
-$caption = function() {
+$telegram->addFile(realpath('test.png'), 'Test');
+
+$telegram->addFile(realpath('test.png'), function() {
     $telegram = new TG();
     $telegram->text('Опис файлу');
     return $telegram->getText();
-};
-$telegram->addFile(realpath('test.png'), $caption());
+});
 $telegram->sendDocument();
 ``` 
 
