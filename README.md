@@ -87,8 +87,13 @@ $telegram->addFile(realpath('test.png'), function() {
     $telegram->text('Опис файлу');
     return $telegram->getText();
 });
+```
+
+Надіслати файл:
+```sh 
 $telegram->sendDocument();
-``` 
+```
+
 
 # Контакти:
 Влад Салабун  
