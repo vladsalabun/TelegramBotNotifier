@@ -1,5 +1,6 @@
 {
     "name": "salabun/telegram-bot-notifier",
+    "description": "Quick and simple telegram bot.",
     "type": "library",
 	"license": "MIT",
     "authors": [
